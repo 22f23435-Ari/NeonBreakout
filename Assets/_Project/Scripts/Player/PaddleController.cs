@@ -7,10 +7,24 @@ public class PaddleController : MonoBehaviour
     [SerializeField] private float moveInput;
 
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
+
+    private float minX;
+    private float maxX;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        float halfScreenWidth =
+            Camera.main.orthographicSize * Camera.main.aspect;
+
+        float halfPaddleWidth =
+            spriteRenderer.bounds.extents.x;
+
+        minX = -halfScreenWidth + halfPaddleWidth;
+        maxX = halfScreenWidth - halfPaddleWidth;
     }
 
     private void Update()
@@ -37,8 +51,14 @@ public class PaddleController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        float targetX =
+            rb.position.x +
+            moveInput * moveSpeed * Time.fixedDeltaTime;
+
+        targetX = Mathf.Clamp(targetX, minX, maxX);
+
         Vector2 targetPosition =
-            rb.position + Vector2.right * moveInput * moveSpeed * Time.fixedDeltaTime;
+            new Vector2(targetX, rb.position.y);
 
         rb.MovePosition(targetPosition);
     }
