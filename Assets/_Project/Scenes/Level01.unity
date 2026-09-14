@@ -533,6 +533,7 @@ GameObject:
   - component: {fileID: 1079419490}
   - component: {fileID: 1079419493}
   - component: {fileID: 1079419492}
+  - component: {fileID: 1079419494}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -677,6 +678,20 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &1079419494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079419489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90d786a89851a5429ac370c9d25e735, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallController
+  launchSpeed: 6
+  launchDirection: {x: 0.8, y: 1}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
